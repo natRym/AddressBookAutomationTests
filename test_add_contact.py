@@ -18,11 +18,13 @@ class TestAddContact(unittest.TestCase):
         self.login(wd, username="admin", password="secret")
         self.open_add_contact_page(wd)
         self.create_contact(wd, Contact(firstname="First Contact", middlename="Middle Name", lastname="Last Name 1",
-                            nickname="nickName1", title="Title1", company="Company1",
-                            address="address1", home="Home1", mobile="111222333", work="Work1", fax="111444555",
-                            email="test@gmail.com",
-                            homepage="homepage1", bday="15", bmonth="February", byear="1900", addresstwo="address2",
-                            hometwo="home1", notes="notes1"))
+                                        nickname="nickName1", title="Title1", company="Company1",
+                                        address="address1", home="Home1", mobile_phone="111222333", work_phone="Work1",
+                                        fax="111444555",
+                                        email="test@gmail.com",
+                                        homepage="homepage1", b_day="15", b_month="February", b_year="1900",
+                                        address_second="address2",
+                                        home_second="home1", notes="notes1"))
         self.logout(wd)
 
     def logout(self, wd):
@@ -56,10 +58,10 @@ class TestAddContact(unittest.TestCase):
         wd.find_element_by_name("home").send_keys(contact.home)
         wd.find_element_by_name("mobile").click()
         wd.find_element_by_name("mobile").clear()
-        wd.find_element_by_name("mobile").send_keys(contact.mobile)
+        wd.find_element_by_name("mobile").send_keys(contact.mobile_phone)
         wd.find_element_by_name("work").click()
         wd.find_element_by_name("work").clear()
-        wd.find_element_by_name("work").send_keys(contact.work)
+        wd.find_element_by_name("work").send_keys(contact.work_phone)
         wd.find_element_by_name("fax").click()
         wd.find_element_by_name("fax").clear()
         wd.find_element_by_name("fax").send_keys(contact.fax)
@@ -70,24 +72,24 @@ class TestAddContact(unittest.TestCase):
         wd.find_element_by_name("homepage").clear()
         wd.find_element_by_name("homepage").send_keys(contact.homepage)
         wd.find_element_by_name("bday").click()
-        Select(wd.find_element_by_name("bday")).select_by_visible_text(contact.bday)
-        wd.find_element_by_xpath("//option[@value='15']").click()
+        Select(wd.find_element_by_name("bday")).select_by_visible_text(contact.b_day)
+        wd.find_element_by_xpath("//option[@value='%s']" % contact.b_day).click()
         wd.find_element_by_name("bmonth").click()
-        Select(wd.find_element_by_name("bmonth")).select_by_visible_text(contact.bmonth)
-        wd.find_element_by_xpath("//option[@value='February']").click()
+        Select(wd.find_element_by_name("bmonth")).select_by_visible_text(contact.b_month)
+        wd.find_element_by_xpath("//option[@value='%s']" % contact.b_month).click()
         wd.find_element_by_name("byear").click()
         wd.find_element_by_name("byear").clear()
-        wd.find_element_by_name("byear").send_keys(contact.byear)
+        wd.find_element_by_name("byear").send_keys(contact.b_year)
         wd.find_element_by_name("address2").click()
         wd.find_element_by_name("address2").clear()
-        wd.find_element_by_name("address2").send_keys(contact.addresstwo)
+        wd.find_element_by_name("address2").send_keys(contact.address_second)
         wd.find_element_by_name("phone2").click()
         wd.find_element_by_name("phone2").clear()
-        wd.find_element_by_name("phone2").send_keys(contact.hometwo)
+        wd.find_element_by_name("phone2").send_keys(contact.home_second)
         wd.find_element_by_name("notes").click()
         wd.find_element_by_name("notes").clear()
         wd.find_element_by_name("notes").send_keys(contact.notes)
-        wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
+        wd.find_element_by_xpath("//input[@type='submit']").click()
 
     def open_add_contact_page(self, wd):
         # init contact creation
