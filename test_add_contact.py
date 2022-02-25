@@ -22,7 +22,7 @@ class TestAddContact(unittest.TestCase):
                                         address="address1", home="Home1", mobile_phone="111222333", work_phone="Work1",
                                         fax="111444555",
                                         email="test@gmail.com",
-                                        homepage="homepage1", b_day="15", b_month="February", b_year="1900",
+                                        homepage="homepage1", b_day="20", b_month="February", b_year="1900",
                                         address_second="address2",
                                         home_second="home1", notes="notes1"))
         self.logout(wd)
