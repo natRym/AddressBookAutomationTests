@@ -135,6 +135,17 @@ class ContactHelper:
         wd.find_element_by_name("notes").send_keys(contact.notes)
         wd.find_element_by_name("update").click()
 
+    def view_contact(self):
+        wd = self.app.wd
+        # open a contact to view details
+        wd.find_element_by_xpath("//img[@title='Details']").click()
+
+    def edit_page_from_view_contact(self):
+        wd = self.app.wd
+        # open a contact to view details
+        wd.find_element_by_xpath("//img[@title='Details']").click()
+        wd.find_element_by_name("modifiy").click()
+
     def delete_first_contact(self):
         wd = self.app.wd
         # select first group

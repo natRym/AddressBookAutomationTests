@@ -27,3 +27,10 @@ def test_edit_contact_to_empty_values(app):
                              address_second="",
                              home_second="", notes=""))
     app.session.logout()
+
+
+def test_edit_page_from_view_contact(app):
+    app.session.login(username="admin", password="secret")
+    app.contact.view_contact()
+    app.contact.edit_page_from_view_contact()
+    app.session.logout()
