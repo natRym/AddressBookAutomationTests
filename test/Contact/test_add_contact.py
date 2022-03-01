@@ -14,3 +14,4 @@ def test_add_contact(app):
                                address_second="address2",
                                home_second="home1", notes="notes1"))
     app.session.logout()
+
