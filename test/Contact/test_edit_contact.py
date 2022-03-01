@@ -16,7 +16,7 @@ def test_edit_first_contact(app):
     app.session.logout()
 
 
-def test_edit_contact_to_empty_values(app):
+def test_edit_first_contact_to_empty_values(app):
     app.session.login(username="admin", password="secret")
     app.contact.edit(Contact(firstname="", middlename="", lastname="",
                                                nickname="", title="", company="",
