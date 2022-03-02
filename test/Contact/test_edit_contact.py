@@ -3,7 +3,7 @@ from model.contact import Contact
 
 def test_edit_first_contact(app):
     app.session.login(username="admin", password="secret")
-    app.contact.edit(
+    app.contact.edit_first_contact(
         Contact(firstname="Edit First Contact", middlename="Edit Middle Name", lastname="Edit Last Name 1",
                 nickname="Edit nickName1", title="Edit Title1", company="Edit Company1",
                 address="Edit address1", home="Edit Home1", mobile_phone="0111222333",
@@ -18,15 +18,15 @@ def test_edit_first_contact(app):
 
 def test_edit_first_contact_to_empty_values(app):
     app.session.login(username="admin", password="secret")
-    app.contact.edit(Contact(firstname="", middlename="", lastname="",
-                                               nickname="", title="", company="",
-                                               address="", home="", mobile_phone="",
-                                               work_phone="",
-                                               fax="",
-                                               email="",
-                                               homepage="", b_day="-", b_month="-", b_year="-",
-                                               address_second="",
-                                               home_second="", notes=""))
+    app.contact.edit_first_contact(Contact(firstname="", middlename="", lastname="",
+                                           nickname="", title="", company="",
+                                           address="", home="", mobile_phone="",
+                                           work_phone="",
+                                           fax="",
+                                           email="",
+                                           homepage="", b_day="-", b_month="-", b_year="-",
+                                           address_second="",
+                                           home_second="", notes=""))
     app.session.logout()
 
 

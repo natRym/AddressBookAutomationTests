@@ -85,7 +85,7 @@ class ContactHelper:
         wd.find_element_by_name("notes").clear()
         wd.find_element_by_name("notes").send_keys(contact.notes)
 
-    def edit(self, contact):
+    def edit_first_contact(self, contact):
         wd = self.app.wd
         # init opening contacts page
         self.open_contacts_page()
