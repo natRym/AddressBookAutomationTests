@@ -11,6 +11,11 @@ class ContactHelper:
         # init contact creation
         wd.find_element_by_link_text("add new").click()
 
+    def open_contacts_page(self):
+        # open contacts page
+        wd = self.app.wd
+        wd.find_element_by_link_text("home").click()
+
     def create(self, contact):
         # init opening add contact page
         wd = self.app.wd
@@ -82,22 +87,28 @@ class ContactHelper:
 
     def edit(self, contact):
         wd = self.app.wd
+        # init opening contacts page
+        self.open_contacts_page()
+        # init edition
         wd.find_element_by_xpath("//table[@id='maintable']//img[@title='Edit']").click()
+        # fill out the form
         self.fill_contact_form(contact)
+        # init submission changes
         wd.find_element_by_name("update").click()
-
-    def view_contact(self):
-        wd = self.app.wd
-        # open a contact to view details
-        wd.find_element_by_xpath("//img[@title='Details']").click()
 
     def edit_page_from_view_contact(self):
         wd = self.app.wd
+        # init opening contacts page
+        self.open_contacts_page()
         # open a contact to view details
+        wd.find_element_by_xpath("//img[@title='Details']").click()
+        # init edition of a contact
         wd.find_element_by_name("modifiy").click()
 
     def delete_first_contact(self):
         wd = self.app.wd
+        # init opening contacts page
+        self.open_contacts_page()
         # select first group
         wd.find_element_by_name("selected[]").click()
         # submit deletion
@@ -106,6 +117,8 @@ class ContactHelper:
 
     def delete_contact_from_edit_page(self):
         wd = self.app.wd
+        # init opening contacts page
+        self.open_contacts_page()
         # open edit page
         wd.find_element_by_xpath("//table[@id='maintable']//img[@title='Edit']").click()
         # submit deletion
