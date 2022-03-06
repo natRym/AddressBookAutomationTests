@@ -2,7 +2,6 @@ from model.contact import Contact
 
 
 def test_edit_first_contact(app):
-    app.session.login(username="admin", password="secret")
     app.contact.edit_first_contact(
         Contact(firstname="Edit First Contact", middlename="Edit Middle Name", lastname="Edit Last Name 1",
                 nickname="Edit nickName1", title="Edit Title1", company="Edit Company1",
@@ -13,11 +12,9 @@ def test_edit_first_contact(app):
                 homepage="Edit homepage1", b_day="25", b_month="June", b_year="1950",
                 address_second="Edit address2",
                 home_second="Edit home1", notes="Edit notes1"))
-    app.session.logout()
 
 
 def test_edit_first_contact_to_empty_values(app):
-    app.session.login(username="admin", password="secret")
     app.contact.edit_first_contact(Contact(firstname="", middlename="", lastname="",
                                            nickname="", title="", company="",
                                            address="", home="", mobile_phone="",
@@ -27,10 +24,11 @@ def test_edit_first_contact_to_empty_values(app):
                                            homepage="", b_day="-", b_month="-", b_year="-",
                                            address_second="",
                                            home_second="", notes=""))
-    app.session.logout()
 
 
 def test_edit_page_opened_from_view_contact(app):
-    app.session.login(username="admin", password="secret")
     app.contact.edit_page_from_view_contact()
-    app.session.logout()
+
+
+def test_edit_firstname_first_contact(app):
+    app.contact.edit_first_contact(Contact(firstname="edit firstname ONLY"))
