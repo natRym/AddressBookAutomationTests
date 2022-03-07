@@ -99,3 +99,8 @@ class ContactHelper:
         self.select_first_contact_for_modification()
         # submit deletion
         wd.find_element_by_xpath("//input[@value='Delete']").click()
+
+    def count(self):
+        wd = self.app.wd
+        self.open_contacts_page()
+        return len(wd.find_elements_by_name("selected[]"))

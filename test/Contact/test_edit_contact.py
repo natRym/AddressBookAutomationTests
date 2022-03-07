@@ -2,6 +2,8 @@ from model.contact import Contact
 
 
 def test_edit_first_contact(app):
+    if app.contact.count() == 0:
+        app.contact.create(Contact(firstname="First Contact"))
     app.contact.edit_first_contact(
         Contact(firstname="Edit First Contact", middlename="Edit Middle Name", lastname="Edit Last Name 1",
                 nickname="Edit nickName1", title="Edit Title1", company="Edit Company1",
@@ -15,6 +17,8 @@ def test_edit_first_contact(app):
 
 
 def test_edit_first_contact_to_empty_values(app):
+    if app.contact.count() == 0:
+        app.contact.create(Contact(firstname="First Contact"))
     app.contact.edit_first_contact(Contact(firstname="", middlename="", lastname="",
                                            nickname="", title="", company="",
                                            address="", home="", mobile_phone="",
@@ -27,8 +31,12 @@ def test_edit_first_contact_to_empty_values(app):
 
 
 def test_edit_page_opened_from_view_contact(app):
+    if app.contact.count() == 0:
+        app.contact.create(Contact(firstname="First Contact"))
     app.contact.edit_page_from_view_contact()
 
 
 def test_edit_firstname_first_contact(app):
+    if app.contact.count() == 0:
+        app.contact.create(Contact(firstname="First Contact"))
     app.contact.edit_first_contact(Contact(firstname="edit firstname ONLY"))
