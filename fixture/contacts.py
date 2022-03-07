@@ -12,9 +12,9 @@ class ContactHelper:
         wd.find_element_by_link_text("add new").click()
 
     def open_contacts_page(self):
-        # open contacts page
         wd = self.app.wd
-        wd.find_element_by_link_text("home").click()
+        if not (wd.current_url.endswith("/addressbook/")):
+            wd.find_element_by_link_text("home").click()
 
     def create(self, contact):
         # init opening add contact page
