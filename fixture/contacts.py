@@ -39,7 +39,7 @@ class ContactHelper:
         self.change_contact_field_value("email", contact.email)
         self.change_contact_field_value("homepage", contact.homepage)
         self.change_drop_down_value("bday", contact.b_day)
-        # self.change_drop_down_value("bmonth", contact.b_month)
+        self.change_drop_down_value("bmonth", contact.b_month)
         self.change_contact_field_value("byear", contact.b_year)
         self.change_contact_field_value("address2", contact.address_second)
         self.change_contact_field_value("phone2", contact.home_second)
@@ -52,12 +52,12 @@ class ContactHelper:
             wd.find_element_by_name(field_name).clear()
             wd.find_element_by_name(field_name).send_keys(text)
 
-    def change_drop_down_value(self, field_name, value):
+    def change_drop_down_value(self, field_name, text):
         wd = self.app.wd
-        if value is not None:
-            wd.find_element_by_name("field_name").click()
-            Select(wd.find_element_by_name("field_name")).select_by_visible_text(field_name)
-            wd.find_element_by_xpath("//option[@value='%s']" % field_name).click()
+        if text is not None:
+            wd.find_element_by_name(field_name).click()
+            Select(wd.find_element_by_name(field_name)).select_by_visible_text(text)
+            wd.find_element_by_xpath("//option[@value='%s']" % text).click()
 
     def select_first_contact_for_modification(self):
         wd = self.app.wd

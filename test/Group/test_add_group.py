@@ -3,7 +3,7 @@ from model.group import Group
 
 
 def test_add_group(app):
-    app.group.create(Group(name="group1", header="groupHeader1", footer="GroupFooter1"
+    app.group.create(Group(name="group1", header="groupHeader1", footer="GroupFooter1"))
 
 
 def test_add_empty_group(app):
