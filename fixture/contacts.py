@@ -109,12 +109,15 @@ class ContactHelper:
         self.open_contacts_page()
         return len(wd.find_elements_by_name("selected[]"))
 
+    contact_cache = None
+
     def get_contact_list(self):
-        wd = self.app.wd
-        self.open_contacts_page()
-        contacts = []
-        rows_quantity = len(wd.find_elements_by_css_selector("table tbody tr[name*='entry']"))
-        for row_number in range(rows_quantity - 1):
-            row_elements = wd.find_elements_by_css_selector("table tbody tr[name*='entry']:nth-child(%d) td" % (row_number + 2))
-            contacts.append(Contact(id=(row_number + 1), firstname=row_elements[2].text, lastname=row_elements[1].text))
-        return contacts
+        if self.contact_cache is None:
+            wd = self.app.wd
+            self.open_contacts_page()
+            self.contact_cache = []
+            rows_quantity = len(wd.find_elements_by_css_selector("table tbody tr[name*='entry']"))
+            for row_number in range(rows_quantity):
+                row_elements = wd.find_elements_by_css_selector("table tbody tr[name*='entry']:nth-child(%d) td" % (row_number + 2))
+                self.contact_cache.append(Contact(id=(row_number + 1), firstname=row_elements[2].text, lastname=row_elements[1].text))
+        return list(self.contact_cache)
