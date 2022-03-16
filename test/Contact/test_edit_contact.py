@@ -1,7 +1,7 @@
 from model.contact import Contact
 
 
-def test_edit_first_contact(app):
+def test_edit_some_contact(app):
     old_contacts = app.contact.get_contact_list()
     contact = Contact(firstname="Edit First Contact", middlename="Edit Middle Name", lastname="Edit Last Name 1",
                       nickname="Edit nickName1", title="Edit Title1", company="Edit Company1",
