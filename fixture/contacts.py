@@ -95,7 +95,6 @@ class ContactHelper:
         wd.switch_to.alert.accept()
         wd.find_element_by_xpath("//div[@class='msgbox']")
 
-
     def delete_contact_from_edit_page(self):
         wd = self.app.wd
         # init opening contacts page
@@ -114,8 +113,8 @@ class ContactHelper:
         wd = self.app.wd
         self.open_contacts_page()
         contacts = []
-        for element in wd.find_elements_by_css_selector("table tbody tr[name*='entry']"):
-            text = element.text
-            id = element.find_element_by_name("selected[]").get_attribute("value")
-            contacts.append(Contact(firstname=text, id=id))
+        rows_quantity = len(wd.find_elements_by_css_selector("table tbody tr[name*='entry']"))
+        for row_number in range(rows_quantity - 1):
+            row_elements = wd.find_elements_by_css_selector("table tbody tr[name*='entry']:nth-child(%d) td" % (row_number + 2))
+            contacts.append(Contact(id=(row_number + 1), firstname=row_elements[2].text, lastname=row_elements[1].text))
         return contacts
