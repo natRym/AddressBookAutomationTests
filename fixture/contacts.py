@@ -25,6 +25,7 @@ class ContactHelper:
         self.fill_contact_form(contact)
         # submit changes
         wd.find_element_by_xpath("//input[@type='submit']").click()
+        self.contact_cache = None
 
     def fill_contact_form(self, contact):
         self.change_contact_field_value("firstname", contact.firstname)
@@ -100,7 +101,7 @@ class ContactHelper:
         self.select_contact_by_index(index)
         # submit deletion
         wd.find_element_by_xpath("//input[@value='Delete']").click()
-  #      wd.switch_to.alert.accept()
+        # wd.switch_to.alert.accept()
         wd.find_element_by_xpath("//div[@class='msgbox']")
         self.contact_cache = None
 
@@ -125,8 +126,9 @@ class ContactHelper:
             wd = self.app.wd
             self.open_contacts_page()
             self.contact_cache = []
-            rows_quantity = len(wd.find_elements_by_css_selector("table tbody tr[name*='entry']"))
-            for row_number in range(rows_quantity):
-                row_elements = wd.find_elements_by_css_selector("table tbody tr[name*='entry']:nth-child(%d) td" % (row_number + 2))
-                self.contact_cache.append(Contact(id=(row_number + 1), firstname=row_elements[2].text, lastname=row_elements[1].text))
-        return list(self.contact_cache)
+            for element in wd.find_elements_by_name("entry"):
+                lastname = element.find_element_by_xpath("td[2]").text
+                firstname = element.find_element_by_xpath("td[3]").text
+                id = element.find_element_by_name("selected[]").get_attribute("value")
+                self.contact_cache.append(Contact(lastname=lastname, firstname=firstname, id=id))
+            return list(self.contact_cache)
