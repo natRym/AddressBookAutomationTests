@@ -7,7 +7,7 @@ def test_edit_some_contact(app):
     index = randrange(len(old_contacts))
     contact = Contact(firstname="Edit First Contact", middlename="Edit Middle Name", lastname="Edit Last Name 1",
                       nickname="Edit nickName1", title="Edit Title1", company="Edit Company1",
-                      address="Edit address1", home="Edit Home1", mobile_phone="0111222333",
+                      address="Edit address1", home_phone="0111222333", mobile_phone="0111222333",
                       work_phone="EditWork1",
                       fax="0111444555",
                       email="Edit@gmail.com",
