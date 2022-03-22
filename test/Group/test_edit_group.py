@@ -1,8 +1,25 @@
 from model.group import Group
 from random import randrange
+import pytest
+import random
+import string
 
 
-def test_edit_some_group(app):
+def random_string(prefix, maxlen):
+    symbols = string.ascii_letters + string.digits + string.punctuation + " "*10
+    return prefix + "".join([random.choice(symbols) for i in range(random.randrange(maxlen))])
+
+
+testdata = [
+    Group(name=name, header=header, footer=footer)
+    for name in ["", random_string("name", 10), ""]
+    for header in ["", random_string("header", 20), random_string("header", 20)]
+    for footer in ["", random_string("footer", 20), random_string("footer", 20)]
+]
+
+
+@pytest.mark.parametrize("group", testdata, ids=[repr(x) for x in testdata])
+def test_edit_some_group(app, group):
     old_groups = app.group.get_group_list()
     index = randrange(len(old_groups))
     group = Group(name="Edit Group", header="Edit Header", footer="Edit GroupFooter")
@@ -14,56 +31,3 @@ def test_edit_some_group(app):
     assert len(old_groups) == len(new_groups)
     old_groups[index] = group
     assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
-
-
-# def test_edit_first_group_to_empty_name(app):
-#     old_groups = app.group.get_group_list()
-#     group = Group(name="", header="", footer="")
-#     group.id = old_groups[0].id
-#     if app.group.count() == 0:
-#         app.group.create(Group(name='group is not created'))
-#     app.group.edit_first_group(group)
-#     new_groups = app.group.get_group_list()
-#     assert len(old_groups) == len(new_groups)
-#     old_groups[0] = group
-#     assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
-#
-#
-# def test_edit_group_name_first_group(app):
-#     old_groups = app.group.get_group_list()
-#     group = Group(name="Edit ONLY Group name")
-#     group.id = old_groups[0].id
-#     if app.group.count() == 0:
-#         app.group.create(Group(name='group is not created'))
-#     app.group.edit_first_group(group)
-#     new_groups = app.group.get_group_list()
-#     assert len(old_groups) == len(new_groups)
-#     old_groups[0] = group
-#     assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
-
-
-# def test_edit_group_header_first_group(app):
-#     old_groups = app.group.get_group_list()
-#     group = Group(header="Edit ONLY Group Header")
-#     group.id = old_groups[0].id
-#     if app.group.count() == 0:
-#         app.group.create(Group(name='group is not created'))
-#     app.group.edit_first_group(group)
-#     new_groups = app.group.get_group_list()
-#     assert len(old_groups) == len(new_groups)
-#     old_groups[0] = group
-#     assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
-
-
-# def test_edit_group_footer_first_group(app):
-#     old_groups = app.group.get_group_list()
-#     group = Group(footer="Edit ONLY Group Footer")
-#     group.id = old_groups[0].id
-#     if app.group.count() == 0:
-#         app.group.create(Group(name='group is not created'))
-#     app.group.edit_first_group(group)
-#     new_groups = app.group.get_group_list()
-#     assert len(old_groups) == len(new_groups)
-#     old_groups[0] = group
-#     assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
-

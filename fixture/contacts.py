@@ -147,7 +147,7 @@ class ContactHelper:
                                                   all_phones_from_home_page=all_phones,
                                                   all_emails_from_home_page=all_emails,
                                                   address=address))
-            return list(self.contact_cache)
+        return list(self.contact_cache)
 
     def get_contact_info_from_edit_page(self, index):
         wd = self.app.wd
