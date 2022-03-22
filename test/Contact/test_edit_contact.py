@@ -13,7 +13,7 @@ def test_edit_some_contact(app):
                       email="Edit@gmail.com",
                       homepage="Edit homepage1", b_day="25", b_month="June", b_year="1950",
                       address_second="Edit address2",
-                      home_second="Edit home1", notes="Edit notes1")
+                      phone_secondary="Edit home1", notes="Edit notes1")
     contact.id = old_contacts[index].id
     if app.contact.count() == 0:
         app.contact.create(Contact(firstname="First Contact"))

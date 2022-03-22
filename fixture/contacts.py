@@ -69,8 +69,7 @@ class ContactHelper:
         wd.find_elements_by_xpath("//img[@title='Edit']")[index].click()
 
     def edit_first_contact(self):
-        wd = self.app.wd
-        self.select_contact_by_index(0)
+        self.edit_contact_by_index(0)
 
     def edit_contact_by_index(self, index, new_contact_data):
         wd = self.app.wd
@@ -99,9 +98,8 @@ class ContactHelper:
         cell = row.find_elements_by_tag_name("td")[6]
         cell.find_element_by_tag_name("a").click()
 
-    def delete_first_contact(self, index):
-        wd = self.app.wd
-        wd.find_elements_by_name("selected[]")[index].click()
+    def delete_first_contact(self):
+        self.delete_contact_by_index(0)
 
     def delete_contact_by_index(self, index):
         wd = self.app.wd
@@ -118,10 +116,11 @@ class ContactHelper:
         wd = self.app.wd
         # init opening contacts page
         self.open_contacts_page()
-        self.edit_contact_by_index()
+        self.edit_contact_by_index(index)
         # submit deletion
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         wd.find_element_by_xpath("//table[@id='maintable']")
+        self.contact_cache = None
 
     def count(self):
         wd = self.app.wd
