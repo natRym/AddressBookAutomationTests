@@ -7,12 +7,12 @@ import string
 
 
 def random_string_text_fields(prefix, maxlen):
-    symbols = string.ascii_letters + string.digits + string.punctuation + " " * 10
+    symbols = string.ascii_letters + string.digits + " " * 10
     return prefix + "".join([random.choice(symbols) for i in range(random.randrange(maxlen))])
 
 
 def random_number_fields(prefix, maxlen):
-    numbers = string.digits + string.punctuation + " " * 10
+    numbers = string.digits + " " * 10
     return prefix + "".join([random.choice(numbers) for i in range(random.randrange(maxlen))])
 
 

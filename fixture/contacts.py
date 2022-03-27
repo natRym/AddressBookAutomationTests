@@ -9,24 +9,38 @@ class ContactHelper:
     def __init__(self, app):
         self.app = app
 
-    def open_add_contact_page(self):
-        wd = self.app.wd
-        # init contact creation
-        wd.find_element_by_link_text("add new").click()
-
     def open_contacts_page(self):
         wd = self.app.wd
         if not (wd.current_url.endswith("/addressbook/")):
             wd.find_element_by_link_text("home").click()
 
     def create(self, contact):
-        # init opening add contact page
         wd = self.app.wd
         self.open_add_contact_page()
+        # init opening add contact page
         self.fill_contact_form(contact)
         # submit changes
         wd.find_element_by_xpath("//input[@type='submit']").click()
         self.contact_cache = None
+
+    def open_add_contact_page(self):
+        wd = self.app.wd
+        # init contact creation
+        wd.find_element_by_link_text("add new").click()
+
+    def open_contact_view_page_by_index(self, index):
+        wd = self.app.wd
+        self.open_contacts_page()
+        row = wd.find_elements_by_name("entry")[index]
+        cell = row.find_elements_by_tag_name("td")[6]
+        cell.find_element_by_tag_name("a").click()
+
+    def open_contact_edit_page_by_index(self, index):
+        wd = self.app.wd
+        self.open_contacts_page()
+        row = wd.find_elements_by_name("entry")[index]
+        cell = row.find_elements_by_tag_name("td")[7]
+        cell.find_element_by_tag_name("a").click()
 
     def fill_contact_form(self, contact):
         self.change_contact_field_value("firstname", contact.firstname)
@@ -66,23 +80,21 @@ class ContactHelper:
     def select_contact_by_index(self, index):
         wd = self.app.wd
         self.open_contacts_page()
-        wd.find_elements_by_xpath("//img[@title='Edit']")[index].click()
+        wd.find_elements_by_name("selected[]")[index].click()
 
-    def edit_first_contact(self):
-        self.edit_contact_by_index(0)
+    def edit_first_contact(self, new_contact_data):
+        self.edit_contact_by_index(0, new_contact_data)
 
     def edit_contact_by_index(self, index, new_contact_data):
         wd = self.app.wd
-        # init opening contacts page
-        self.open_contacts_page()
-        self.select_contact_by_index(index)
+        self.open_contact_edit_page_by_index(index)
         # wd.find_element_by_name("Edit / add address book entry")
         self.fill_contact_form(new_contact_data)
         # init submission changes
         wd.find_element_by_name("update").click()
         self.contact_cache = None
 
-    def edit_page_from_view_contact(self):
+    def open_edit_page_from_view_contact_page(self):
         wd = self.app.wd
         # init opening contacts page
         self.open_contacts_page()
@@ -91,32 +103,22 @@ class ContactHelper:
         # init edition of a contact
         wd.find_element_by_name("modifiy").click()
 
-    def open_contact_view_by_index(self, index):
-        wd = self.app.wd
-        self.open_contacts_page()
-        row = wd.find_elements_by_name("entry")[index]
-        cell = row.find_elements_by_tag_name("td")[6]
-        cell.find_element_by_tag_name("a").click()
-
     def delete_first_contact(self):
-        self.delete_contact_by_index(0)
+        self.delete_contact_from_grid_by_index(0)
 
-    def delete_contact_by_index(self, index):
+    def delete_contact_from_grid_by_index(self, index):
         wd = self.app.wd
         # init opening contacts page
-        self.open_contacts_page()
         self.select_contact_by_index(index)
         # submit deletion
         wd.find_element_by_xpath("//input[@value='Delete']").click()
-        # wd.switch_to.alert.accept()
+        wd.switch_to.alert.accept()
         wd.find_element_by_xpath("//div[@class='msgbox']")
         self.contact_cache = None
 
     def delete_contact_from_edit_page(self, index):
         wd = self.app.wd
-        # init opening contacts page
-        self.open_contacts_page()
-        self.edit_contact_by_index(index)
+        self.open_contact_edit_page_by_index(index)
         # submit deletion
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         wd.find_element_by_xpath("//table[@id='maintable']")
@@ -150,7 +152,7 @@ class ContactHelper:
 
     def get_contact_info_from_edit_page(self, index):
         wd = self.app.wd
-        self.select_contact_by_index(index)
+        self.open_contact_edit_page_by_index(index)
         firstname = wd.find_element_by_name("firstname").get_attribute("value")
         lastname = wd.find_element_by_name("lastname").get_attribute("value")
         id = wd.find_element_by_name("id").get_attribute("value")
@@ -164,11 +166,12 @@ class ContactHelper:
         email_third = wd.find_element_by_name("email3").get_attribute("value")
         return Contact(lastname=lastname, firstname=firstname, id=id,
                        home_phone=home_phone, mobile_phone=mobile_phone, work_phone=work_phone,
-                       phone_secondary=phone_secondary, address=address, email=email, email_second=email_second, email_third=email_third)
+                       phone_secondary=phone_secondary, address=address, email=email, email_second=email_second,
+                       email_third=email_third)
 
     def get_contact_from_view_page(self, index):
         wd = self.app.wd
-        self.open_contact_view_by_index(index)
+        self.open_contact_view_page_by_index(index)
         text = wd.find_element_by_id("content").text
         home_phone = re.search("H: (.*)", text).group(1)
         mobile_phone = re.search("M: (.*)", text).group(1)

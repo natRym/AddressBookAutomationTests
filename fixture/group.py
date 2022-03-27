@@ -35,9 +35,8 @@ class GroupHelper:
             wd.find_element_by_name(field_name).clear()
             wd.find_element_by_name(field_name).send_keys(text)
 
-    def edit_first_group(self):
-        wd = self.app.wd
-        self.edit_group_by_index(0)
+    def edit_first_group(self, new_group_data):
+        self.edit_group_by_index(0, new_group_data)
 
     def edit_group_by_index(self, index, new_group_data):
         wd = self.app.wd

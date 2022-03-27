@@ -31,3 +31,9 @@ def test_edit_some_group(app, group):
     assert len(old_groups) == len(new_groups)
     old_groups[index] = group
     assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
+
+
+def test_edit_header_first_group(app):
+    if app.group.count() == 0:
+        app.group.create(Group(header="Edit Header"))
+    app.group.edit_first_group(Group(header="edit firstname ONLY"))
