@@ -1,68 +1,44 @@
 [
   {
+    "py/object": "model.group.Group",
     "name": "",
     "header": "",
     "footer": "",
     "id": null
   },
   {
-    "name": "name5bLN",
-    "header": "headerpRv8uc",
-    "footer": "footersr  lrRws",
-    "id": null
-  },
-  {
-    "name": "nameKE",
-    "header": "headerYL   vIqyf U5I3 vMm",
-    "footer": "footerpfnnfr 4xgfVu ",
-    "id": null
-  },
-  {
-    "name": "nameKVB",
-    "header": "headerhSY5qYB7jfYVXDS ",
-    "footer": "footerLrbn",
-    "id": null
-  },
-  {
-    "name": "name 5oYW",
-    "header": "headertnkpfiM6WzlM0bp",
-    "footer": "footer6 fQR X CEXufM iOP",
-    "id": null
-  },
-  {
-    "name": "namebj",
-    "header": "headerQWvAOgCtj",
-    "footer": "footerSm9H E",
-    "id": null
-  },
-  {
-    "name": "nameIIByetp",
-    "header": "headerK23Jov",
-    "footer": "footerH5llLEyH VW4",
-    "id": null
-  },
-  {
-    "name": "nameV 4VFPu6g",
-    "header": "headerzi1BM4 TumE Ev7 X81",
-    "footer": "footerXAfuyAuVp3g8K4kv0z",
-    "id": null
-  },
-  {
+    "py/object": "model.group.Group",
     "name": "name",
-    "header": "headerK9uYPL",
-    "footer": "footer Oq",
+    "header": "header13  FEm5 ",
+    "footer": "footerGzmPlNe OeCnd G",
     "id": null
   },
   {
-    "name": "nameW VO",
-    "header": "headereoAOx C3FGPzSKQKc",
-    "footer": "footervZ RE",
+    "py/object": "model.group.Group",
+    "name": "namesD GZdJ",
+    "header": "header1C7eaDdtasC3Q oitF4",
+    "footer": "footerG  tUc6vqZ",
     "id": null
   },
   {
-    "name": "name0",
-    "header": "headerxupt 5",
-    "footer": "footerqwf",
+    "py/object": "model.group.Group",
+    "name": "namex",
+    "header": "headerLF2D2UOJXh F p 1fsO",
+    "footer": "footerDjM4h z mpIjE4s",
+    "id": null
+  },
+  {
+    "py/object": "model.group.Group",
+    "name": "name",
+    "header": "headerLIiq",
+    "footer": "footerC3JiIRZHL0pu",
+    "id": null
+  },
+  {
+    "py/object": "model.group.Group",
+    "name": "namecKLN",
+    "header": "headerCINavLe8qL ",
+    "footer": "footerB",
     "id": null
   }
 ]
