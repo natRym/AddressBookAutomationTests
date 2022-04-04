@@ -26,3 +26,7 @@ def test_delete_some_contact_from_edit_page(app, db):
     assert len(old_contacts) - 1 == len(new_contacts)
     old_contacts[index:index+1] = []
     assert old_contacts == new_contacts
+
+
+# def test_contact_is_deleted_from_group():
+
