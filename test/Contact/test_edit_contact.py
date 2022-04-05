@@ -40,13 +40,23 @@ def test_edit_some_contact(app, contact):
     assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
 
 
-def test_edit_page_opened_from_view_contact(app):
-    if app.contact.count() == 0:
+@pytest.mark.parametrize("contact", testdata, ids=[repr(x) for x in testdata])
+def test_edit_some_contact_by_id(app, db, contact, check_ui):
+    if len(db.get_contact_list()) == 0:
+        app.contact.create(Contact(firstname="First Contact"))
+    old_contacts = db.get_contact_list()
+    contact = random.choice(old_contacts)
+    app.contact.edit_contact_by_id(contact.id, contact)
+    new_contacts = db.get_contact_list()
+    assert len(old_contacts) == len(new_contacts)
+    old_contacts = contact
+    if check_ui:
+        assert sorted(old_contacts, key=Contact.id_or_max) == sorted(app.contact.get_contact_list(),
+                                                                     key=Contact.id_or_max)
+
+
+def test_edit_page_opened_from_view_contact(app, db):
+    if len(db.get_contact_list()) == 0:
         app.contact.create(Contact(firstname="First Contact"))
     app.contact.open_edit_page_from_view_contact_page()
-
-
-def test_edit_firstname_first_contact(app):
-    if app.contact.count() == 0:
-        app.contact.create(Contact(firstname="First Contact"))
-    app.contact.edit_first_contact(Contact(firstname="edit firstname ONLY"))
+    assert (app.contact.detect_edit_page_is_active(), "Edit Page is NOT Opened")
