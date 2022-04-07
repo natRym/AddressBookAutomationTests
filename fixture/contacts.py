@@ -234,4 +234,13 @@ class ContactHelper:
         self.open_contacts_page()
         self.contact_cache = None
 
+    def delete_contact_from_group_via_grid_by_id(self, contact_id, group_id):
+        wd = self.app.wd
+        self.open_contacts_page()
+        Select(wd.find_element_by_name("group")).select_by_value(group_id)
+        self.select_contact_by_id(contact_id)
+        wd.find_element_by_name("remove").click()
+        self.open_contacts_page()
+        self.contact_cache = None
+
 
