@@ -223,3 +223,15 @@ class ContactHelper:
         phone_secondary = re.search("P: (.*)", text).group(1)
         return Contact(home_phone=home_phone, mobile_phone=mobile_phone, work_phone=work_phone,
                        phone_secondary=phone_secondary)
+
+    def add_contact_to_group_via_grid_by_id(self, contact_id, group_id):
+        wd = self.app.wd
+        self.open_contacts_page()
+        self.select_contact_by_id(contact_id)
+        wd.find_element_by_name("to_group").click()
+        Select(wd.find_element_by_name("to_group")).select_by_value(group_id)
+        wd.find_element_by_name("add").click()
+        self.open_contacts_page()
+        self.contact_cache = None
+
+
