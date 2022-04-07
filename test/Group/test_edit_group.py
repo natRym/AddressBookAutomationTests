@@ -29,5 +29,6 @@ def test_edit_some_group(app, db, group, check_ui):
     new_groups = db.get_group_list()
     assert len(old_groups) == len(new_groups)
     old_groups = group
+    assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
     if check_ui:
         assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
