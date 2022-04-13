@@ -20,15 +20,17 @@ testdata = [
 
 @pytest.mark.parametrize("group", testdata, ids=[repr(x) for x in testdata])
 def test_edit_some_group(app, db, group, check_ui):
-    old_groups = db.get_group_list()
-    group = random.choice(old_groups)
-    new_group_data = Group(name="Edit Group", header="Edit Header", footer="Edit GroupFooter")
+    groups_before_edit = db.get_group_list()
+    index = randrange(len(groups_before_edit))
+    group_id_to_edit = groups_before_edit[index].id
     if len(db.get_group_list()) == 0:
         app.group.create(Group(name='test'))
-    app.group.edit_group_by_id(group.id, new_group_data)
-    new_groups = db.get_group_list()
-    assert len(old_groups) == len(new_groups)
-    old_groups = group
-    assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
+    app.group.edit_group_by_id(group_id_to_edit, group)
+    groups_after_edit = db.get_group_list()
+    assert len(groups_before_edit) == len(groups_after_edit)
+    groups_before_edit[index] = group
+    assert sorted(groups_before_edit, key=Group.id_or_max) == sorted(groups_after_edit, key=Group.id_or_max)
     if check_ui:
-        assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
+        assert sorted(groups_after_edit, key=Group.id_or_max) == sorted(app.contact.get_contact_list(),
+                                                                     key=Group.id_or_max)
+

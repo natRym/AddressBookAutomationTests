@@ -50,6 +50,7 @@ def test_edit_some_contact_by_id(app, db, contact, check_ui):
     app.contact.edit_contact_by_id(contact_id_to_edit, contact)
     contacts_after_edit = db.get_contact_list()
     assert len(contacts_before_edit) == len(contacts_after_edit)
+    contacts_before_edit[index] = contact
     assert sorted(contacts_before_edit, key=Contact.id_or_max) == sorted(contacts_after_edit, key=Contact.id_or_max)
     if check_ui:
         assert sorted(contacts_after_edit, key=Contact.id_or_max) == sorted(app.contact.get_contact_list(),
@@ -61,3 +62,4 @@ def test_edit_page_opened_from_view_contact(app, db):
         app.contact.create(Contact(firstname="First Contact"))
     app.contact.open_edit_page_from_view_contact_page()
     assert (app.contact.detect_edit_page_is_active(), "Edit Page is NOT Opened")
+
