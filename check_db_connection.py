@@ -7,7 +7,7 @@ from model.group import Group
 # db = ORMFixture(host='127.0.0.1', name='addressbook', user='root', password='')
 #
 # try:
-#     l = db.get_group_list_with_contacts(Group(id='277'))
+#     l = db.get_contacts_not_in_group()
 #     for item in l:
 #         print(item)
 #     print(len(l))
@@ -18,7 +18,7 @@ from model.group import Group
 db = DbFixture(host='127.0.0.1', name='addressbook', user='root', password='')
 
 try:
-    l = db.get_contact_added_to_group()
+    l = db.get_contact_list_without_groups()
     # for item in l:
     #     print(item)
     # print(len(l))

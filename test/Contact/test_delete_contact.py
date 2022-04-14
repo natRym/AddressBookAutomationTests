@@ -37,6 +37,11 @@ def test_contact_is_deleted_from_group(app, db, orm):
         app.group.create(Group(name='test'))
     if len(db.get_contact_list()) == 0:
         app.contact.create(Contact(firstname="First Contact"))
+    all_groups = db.get_group_list()
+    group_for_adding = (random.choice(all_groups)).id
+    contact_not_in_group = random.choice(orm.get_contacts_not_in_group(Group(id=group_for_adding)))
+    if len(db.get_group_list_with_contacts()) == 0:
+        app.contact.add_contact_to_group_via_grid_by_id(contact_not_in_group.id, group_for_adding)
     group_list_with_contacts = db.get_group_list_with_contacts()
     group_for_remove_contact = (random.choice(group_list_with_contacts)).id
     contacts_in_group_before = orm.get_contacts_in_group(Group(id=group_for_remove_contact))
@@ -44,4 +49,4 @@ def test_contact_is_deleted_from_group(app, db, orm):
     app.contact.delete_contact_from_group_via_grid_by_id(contact_id_to_delete_from_group, group_for_remove_contact)
     contacts_in_group_after = orm.get_contacts_in_group(Group(id=group_for_remove_contact))
     assert (len(contacts_in_group_before) - 1 == len(contacts_in_group_after))
-    assert sorted(db.get_contacts_before_adding_to_group(), key=Contact.id_or_max) == sorted(db.get_contacts_after_adding_to_group(), key=Contact.id_or_max)
+    assert sorted(db.get_contacts_in_groups(), key=Contact.id_or_max) == sorted(db.get_contacts_in_groups(), key=Contact.id_or_max)
