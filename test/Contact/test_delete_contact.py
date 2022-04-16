@@ -45,8 +45,9 @@ def test_contact_is_deleted_from_group(app, db, orm):
     group_list_with_contacts = db.get_group_list_with_contacts()
     group_for_remove_contact = (random.choice(group_list_with_contacts)).id
     contacts_in_group_before = orm.get_contacts_in_group(Group(id=group_for_remove_contact))
-    contact_id_to_delete_from_group = random.choice(contacts_in_group_before).id
-    app.contact.delete_contact_from_group_via_grid_by_id(contact_id_to_delete_from_group, group_for_remove_contact)
+    contact_id_to_delete_from_group = random.choice(contacts_in_group_before)
+    app.contact.delete_contact_from_group_via_grid_by_id(contact_id_to_delete_from_group.id, group_for_remove_contact)
     contacts_in_group_after = orm.get_contacts_in_group(Group(id=group_for_remove_contact))
     assert (len(contacts_in_group_before) - 1 == len(contacts_in_group_after))
-    assert sorted(db.get_contacts_in_groups(), key=Contact.id_or_max) == sorted(db.get_contacts_in_groups(), key=Contact.id_or_max)
+    contacts_in_group_before.remove(contact_id_to_delete_from_group)
+    assert sorted(contacts_in_group_before, key=Contact.id_or_max) == sorted(contacts_in_group_after, key=Contact.id_or_max)

@@ -23,9 +23,10 @@ def test_contact_is_added_into_group_via_grid(app, db, orm):
         app.contact.create(Contact(firstname="First Contact"))
     all_groups = db.get_group_list()
     group_for_adding = (random.choice(all_groups)).id
-    contact_not_in_group = random.choice(orm.get_contacts_not_in_group(Group(id=group_for_adding)))
     contacts_in_group_before = orm.get_contacts_in_group(Group(id=group_for_adding))
+    contact_not_in_group = random.choice(orm.get_contacts_not_in_group(Group(id=group_for_adding)))
     app.contact.add_contact_to_group_via_grid_by_id(contact_not_in_group.id, group_for_adding)
     contacts_in_group_after = orm.get_contacts_in_group(Group(id=group_for_adding))
     assert (len(contacts_in_group_after) == len(contacts_in_group_before) + 1)
-    assert sorted(db.get_contacts_in_groups(), key=Contact.id_or_max) == sorted(db.get_contacts_in_groups(), key=Contact.id_or_max)
+    contacts_in_group_before.append(contact_not_in_group)
+    assert sorted(contacts_in_group_before, key=Contact.id_or_max) == sorted(contacts_in_group_after, key=Contact.id_or_max)
