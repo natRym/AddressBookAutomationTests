@@ -1,0 +1,287 @@
+
+Skip to content
+[Jenkins]Jenkins
+поиск
+1
+1
+admin
+выход
+Dashboard
+addressbook tests
+#52
+
+Назад к проекту
+
+Статус
+
+Изменения
+
+Вывод консоли
+
+Просмотреть как неформатированный текст
+
+Редактировать информацию сборки
+
+Delete build ‘#52’
+
+Git Build Data
+
+Предыдущая сборка
+
+Следующая сборка
+Вывод на консоль
+Started by user admin
+Running as SYSTEM
+Building in workspace C:\Users\rymar\.jenkins\workspace\addressbook tests
+The recommended git tool is: NONE
+No credentials specified
+ > git.exe rev-parse --resolve-git-dir C:\Users\rymar\.jenkins\workspace\addressbook tests\.git # timeout=10
+Fetching changes from the remote Git repository
+ > git.exe config remote.origin.url https://github.com/natRym/rymarava_b30_python/ # timeout=10
+Fetching upstream changes from https://github.com/natRym/rymarava_b30_python/
+ > git.exe --version # timeout=10
+ > git --version # 'git version 2.35.1.windows.2'
+ > git.exe fetch --tags --force --progress -- https://github.com/natRym/rymarava_b30_python/ +refs/heads/*:refs/remotes/origin/* # timeout=10
+Seen branch in repository origin/main
+Seen 1 remote branch
+ > git.exe show-ref --tags -d # timeout=10
+Checking out Revision a0be20ad0fd784fe629a19aede15db3f3521dc83 (origin/main)
+ > git.exe config core.sparsecheckout # timeout=10
+ > git.exe checkout -f a0be20ad0fd784fe629a19aede15db3f3521dc83 # timeout=10
+Commit message: "Update requirements.txt"
+ > git.exe rev-list --no-walk a0be20ad0fd784fe629a19aede15db3f3521dc83 # timeout=10
+[addressbook tests] $ cmd.exe /C "C:\Python39\python.exe C:\Users\rymar\.jenkins\shiningpanda\jobs\62ae2d4d\virtualenv.py C:\Users\rymar\.jenkins\shiningpanda\jobs\62ae2d4d\virtualenvs\d41d8cd9 && exit %%ERRORLEVEL%%"
+C:\Users\rymar\.jenkins\shiningpanda\jobs\62ae2d4d\virtualenv.py:1041: DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
+  import imp
+PYTHONHOME is set.  You *must* activate the virtualenv before using it
+Using base prefix 'C:\\Python39'
+New python executable in C:\Users\rymar\.jenkins\shiningpanda\jobs\62ae2d4d\virtualenvs\d41d8cd9\Scripts\python.exe
+Installing setuptools, pip, wheel...done.
+[addressbook tests] $ cmd.exe /c call C:\Users\rymar\AppData\Local\Temp\shiningpanda3270889591755884850.bat
+
+C:\Users\rymar\.jenkins\workspace\addressbook tests>pip install -r requirements.txt 
+Collecting pytest
+  Using cached pytest-7.1.1-py3-none-any.whl (297 kB)
+Requirement already satisfied: pip in c:\users\rymar\.jenkins\shiningpanda\jobs\62ae2d4d\virtualenvs\d41d8cd9\lib\site-packages (from -r requirements.txt (line 2)) (22.0.4)
+Collecting pytest_bdd
+  Downloading pytest_bdd-5.0.0-py3-none-any.whl (38 kB)
+Collecting selenium
+  Using cached selenium-4.1.3-py3-none-any.whl (968 kB)
+Collecting jsonpickle
+  Using cached jsonpickle-2.1.0-py2.py3-none-any.whl (38 kB)
+Collecting pony
+  Using cached pony-0.7.16-py3-none-any.whl (313 kB)
+Collecting pymysql
+  Using cached PyMySQL-1.0.2-py3-none-any.whl (43 kB)
+Collecting mysql-connector-python-rf
+  Downloading mysql-connector-python-rf-2.2.2.tar.gz (11.9 MB)
+     ---------------------------------------- 11.9/11.9 MB 5.5 MB/s eta 0:00:00
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting colorama
+  Using cached colorama-0.4.4-py2.py3-none-any.whl (16 kB)
+Collecting tomli>=1.0.0
+  Using cached tomli-2.0.1-py3-none-any.whl (12 kB)
+Collecting packaging
+  Using cached packaging-21.3-py3-none-any.whl (40 kB)
+Collecting py>=1.8.2
+  Using cached py-1.11.0-py2.py3-none-any.whl (98 kB)
+Collecting attrs>=19.2.0
+  Using cached attrs-21.4.0-py2.py3-none-any.whl (60 kB)
+Collecting iniconfig
+  Using cached iniconfig-1.1.1-py2.py3-none-any.whl (5.0 kB)
+Collecting atomicwrites>=1.0
+  Using cached atomicwrites-1.4.0-py2.py3-none-any.whl (6.8 kB)
+Collecting pluggy<2.0,>=0.12
+  Using cached pluggy-1.0.0-py2.py3-none-any.whl (13 kB)
+Collecting Mako
+  Downloading Mako-1.2.0-py3-none-any.whl (78 kB)
+     ---------------------------------------- 78.4/78.4 KB 4.3 MB/s eta 0:00:00
+Collecting parse-type
+  Downloading parse_type-0.6.0-py2.py3-none-any.whl (32 kB)
+Collecting parse
+  Downloading parse-1.19.0.tar.gz (30 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting glob2
+  Downloading glob2-0.7.tar.gz (10 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting urllib3[secure,socks]~=1.26
+  Using cached urllib3-1.26.9-py2.py3-none-any.whl (138 kB)
+Collecting trio~=0.17
+  Using cached trio-0.20.0-py3-none-any.whl (359 kB)
+Collecting trio-websocket~=0.9
+  Using cached trio_websocket-0.9.2-py3-none-any.whl (16 kB)
+Collecting sortedcontainers
+  Using cached sortedcontainers-2.4.0-py2.py3-none-any.whl (29 kB)
+Collecting idna
+  Using cached idna-3.3-py3-none-any.whl (61 kB)
+Collecting cffi>=1.14
+  Downloading cffi-1.15.0-cp39-cp39-win_amd64.whl (180 kB)
+     -------------------------------------- 180.3/180.3 KB 3.6 MB/s eta 0:00:00
+Collecting async-generator>=1.9
+  Using cached async_generator-1.10-py3-none-any.whl (18 kB)
+Collecting sniffio
+  Using cached sniffio-1.2.0-py3-none-any.whl (10 kB)
+Collecting outcome
+  Using cached outcome-1.1.0-py2.py3-none-any.whl (9.7 kB)
+Collecting wsproto>=0.14
+  Using cached wsproto-1.1.0-py3-none-any.whl (24 kB)
+Collecting PySocks!=1.5.7,<2.0,>=1.5.6
+  Using cached PySocks-1.7.1-py3-none-any.whl (16 kB)
+Collecting certifi
+  Using cached certifi-2021.10.8-py2.py3-none-any.whl (149 kB)
+Collecting pyOpenSSL>=0.14
+  Using cached pyOpenSSL-22.0.0-py2.py3-none-any.whl (55 kB)
+Collecting cryptography>=1.3.4
+  Using cached cryptography-36.0.2-cp36-abi3-win_amd64.whl (2.2 MB)
+Collecting MarkupSafe>=0.9.2
+  Downloading MarkupSafe-2.1.1-cp39-cp39-win_amd64.whl (17 kB)
+Collecting pyparsing!=3.0.5,>=2.0.2
+  Using cached pyparsing-3.0.8-py3-none-any.whl (98 kB)
+Collecting six>=1.11
+  Using cached six-1.16.0-py2.py3-none-any.whl (11 kB)
+Collecting pycparser
+  Using cached pycparser-2.21-py2.py3-none-any.whl (118 kB)
+Collecting h11<1,>=0.9.0
+  Using cached h11-0.13.0-py3-none-any.whl (58 kB)
+Building wheels for collected packages: mysql-connector-python-rf, glob2, parse
+  Building wheel for mysql-connector-python-rf (setup.py): started
+  Building wheel for mysql-connector-python-rf (setup.py): finished with status 'done'
+  Created wheel for mysql-connector-python-rf: filename=mysql_connector_python_rf-2.2.2-cp39-cp39-win_amd64.whl size=249465 sha256=c86e3ae9a5a5c2fa1a230cdb51338bc905cb279286c5fcbe739ddb3cb5c68b1d
+  Stored in directory: c:\users\rymar\appdata\local\pip\cache\wheels\64\06\5b\ef9543936a3f5de15b02775b6ae548a09f3ed2319d20342771
+  Building wheel for glob2 (setup.py): started
+  Building wheel for glob2 (setup.py): finished with status 'done'
+  Created wheel for glob2: filename=glob2-0.7-py2.py3-none-any.whl size=9320 sha256=d061586717f5b6d74875c6fbf5a9b03e1f0a7ee45be8389915911340ee3d6cb1
+  Stored in directory: c:\users\rymar\appdata\local\pip\cache\wheels\c0\dd\ee\ba6164807de7570971e8f160dbe6a4178ff4e5922f48c093be
+  Building wheel for parse (setup.py): started
+  Building wheel for parse (setup.py): finished with status 'done'
+  Created wheel for parse: filename=parse-1.19.0-py3-none-any.whl size=24591 sha256=4896cef84cbef03effbab421f4838aa4d40fa7e1e1d1292ebd33b3bf85aa895e
+  Stored in directory: c:\users\rymar\appdata\local\pip\cache\wheels\d6\9c\58\ee3ba36897e890f3ad81e9b730791a153fce20caa4a8a474df
+Successfully built mysql-connector-python-rf glob2 parse
+Installing collected packages: sortedcontainers, pony, parse, mysql-connector-python-rf, iniconfig, glob2, certifi, urllib3, tomli, sniffio, six, PySocks, pyparsing, pymysql, pycparser, py, pluggy, MarkupSafe, jsonpickle, idna, h11, colorama, attrs, atomicwrites, async-generator, wsproto, parse-type, packaging, outcome, Mako, cffi, trio, pytest, cryptography, trio-websocket, pytest_bdd, pyOpenSSL, selenium
+Successfully installed Mako-1.2.0 MarkupSafe-2.1.1 PySocks-1.7.1 async-generator-1.10 atomicwrites-1.4.0 attrs-21.4.0 certifi-2021.10.8 cffi-1.15.0 colorama-0.4.4 cryptography-36.0.2 glob2-0.7 h11-0.13.0 idna-3.3 iniconfig-1.1.1 jsonpickle-2.1.0 mysql-connector-python-rf-2.2.2 outcome-1.1.0 packaging-21.3 parse-1.19.0 parse-type-0.6.0 pluggy-1.0.0 pony-0.7.16 py-1.11.0 pyOpenSSL-22.0.0 pycparser-2.21 pymysql-1.0.2 pyparsing-3.0.8 pytest-7.1.1 pytest_bdd-5.0.0 selenium-4.1.3 six-1.16.0 sniffio-1.2.0 sortedcontainers-2.4.0 tomli-2.0.1 trio-0.20.0 trio-websocket-0.9.2 urllib3-1.26.9 wsproto-1.1.0
+
+C:\Users\rymar\.jenkins\workspace\addressbook tests>py.test test\Group\test_add_group.py 
+============================= test session starts =============================
+platform win32 -- Python 3.9.12, pytest-7.1.1, pluggy-1.0.0
+rootdir: C:\Users\rymar\.jenkins\workspace\addressbook tests
+plugins: bdd-5.0.0
+collected 6 items
+
+test\Group\test_add_group.py ......                                      [100%]
+
+============================== warnings summary ===============================
+test/Group/test_add_group.py::test_add_group[None:::]
+test/Group/test_add_group.py::test_add_group[None:name:header13  FEm5 :footerGzmPlNe OeCnd G]
+test/Group/test_add_group.py::test_add_group[None:namesD GZdJ:header1C7eaDdtasC3Q oitF4:footerG  tUc6vqZ]
+test/Group/test_add_group.py::test_add_group[None:namex:headerLF2D2UOJXh F p 1fsO:footerDjM4h z mpIjE4s]
+test/Group/test_add_group.py::test_add_group[None:name:headerLIiq:footerC3JiIRZHL0pu]
+test/Group/test_add_group.py::test_add_group[None:namecKLN:headerCINavLe8qL :footerB]
+test/Group/test_add_group.py::test_add_group[None:namecKLN:headerCINavLe8qL :footerB]
+  C:\Users\rymar\.jenkins\workspace\addressbook tests\fixture\session.py:24: DeprecationWarning: find_elements_by_link_text is deprecated. Please use find_elements(by=By.LINK_TEXT, value=text) instead
+    return len(wd.find_elements_by_link_text("Logout")) > 0
+
+test/Group/test_add_group.py::test_add_group[None:::]
+  C:\Users\rymar\.jenkins\workspace\addressbook tests\fixture\session.py:9: DeprecationWarning: find_element_by_name is deprecated. Please use find_element(by=By.NAME, value=name) instead
+    wd.find_element_by_name("user").click()
+
+test/Group/test_add_group.py::test_add_group[None:::]
+  C:\Users\rymar\.jenkins\workspace\addressbook tests\fixture\session.py:10: DeprecationWarning: find_element_by_name is deprecated. Please use find_element(by=By.NAME, value=name) instead
+    wd.find_element_by_name("user").clear()
+
+test/Group/test_add_group.py::test_add_group[None:::]
+  C:\Users\rymar\.jenkins\workspace\addressbook tests\fixture\session.py:11: DeprecationWarning: find_element_by_name is deprecated. Please use find_element(by=By.NAME, value=name) instead
+    wd.find_element_by_name("user").send_keys(username)
+
+test/Group/test_add_group.py::test_add_group[None:::]
+  C:\Users\rymar\.jenkins\workspace\addressbook tests\fixture\session.py:12: DeprecationWarning: find_element_by_name is deprecated. Please use find_element(by=By.NAME, value=name) instead
+    wd.find_element_by_name("pass").click()
+
+test/Group/test_add_group.py::test_add_group[None:::]
+  C:\Users\rymar\.jenkins\workspace\addressbook tests\fixture\session.py:13: DeprecationWarning: find_element_by_name is deprecated. Please use find_element(by=By.NAME, value=name) instead
+    wd.find_element_by_name("pass").clear()
+
+test/Group/test_add_group.py::test_add_group[None:::]
+  C:\Users\rymar\.jenkins\workspace\addressbook tests\fixture\session.py:14: DeprecationWarning: find_element_by_name is deprecated. Please use find_element(by=By.NAME, value=name) instead
+    wd.find_element_by_name("pass").send_keys(password)
+
+test/Group/test_add_group.py::test_add_group[None:::]
+  C:\Users\rymar\.jenkins\workspace\addressbook tests\fixture\session.py:15: DeprecationWarning: find_element_by_xpath is deprecated. Please use find_element(by=By.XPATH, value=xpath) instead
+    wd.find_element_by_xpath("//input[@value='Login']").click()
+
+test/Group/test_add_group.py::test_add_group[None:::]
+  C:\Users\rymar\.jenkins\workspace\addressbook tests\fixture\group.py:13: DeprecationWarning: find_element_by_link_text is deprecated. Please use find_element(by=By.LINK_TEXT, value=link_text) instead
+    wd.find_element_by_link_text("groups").click()
+
+test/Group/test_add_group.py::test_add_group[None:::]
+test/Group/test_add_group.py::test_add_group[None:name:header13  FEm5 :footerGzmPlNe OeCnd G]
+test/Group/test_add_group.py::test_add_group[None:namesD GZdJ:header1C7eaDdtasC3Q oitF4:footerG  tUc6vqZ]
+test/Group/test_add_group.py::test_add_group[None:namex:headerLF2D2UOJXh F p 1fsO:footerDjM4h z mpIjE4s]
+test/Group/test_add_group.py::test_add_group[None:name:headerLIiq:footerC3JiIRZHL0pu]
+test/Group/test_add_group.py::test_add_group[None:namecKLN:headerCINavLe8qL :footerB]
+  C:\Users\rymar\.jenkins\workspace\addressbook tests\fixture\group.py:19: DeprecationWarning: find_element_by_name is deprecated. Please use find_element(by=By.NAME, value=name) instead
+    wd.find_element_by_name("new").click()
+
+test/Group/test_add_group.py: 18 warnings
+  C:\Users\rymar\.jenkins\workspace\addressbook tests\fixture\group.py:34: DeprecationWarning: find_element_by_name is deprecated. Please use find_element(by=By.NAME, value=name) instead
+    wd.find_element_by_name(field_name).click()
+
+test/Group/test_add_group.py: 18 warnings
+  C:\Users\rymar\.jenkins\workspace\addressbook tests\fixture\group.py:35: DeprecationWarning: find_element_by_name is deprecated. Please use find_element(by=By.NAME, value=name) instead
+    wd.find_element_by_name(field_name).clear()
+
+test/Group/test_add_group.py: 18 warnings
+  C:\Users\rymar\.jenkins\workspace\addressbook tests\fixture\group.py:36: DeprecationWarning: find_element_by_name is deprecated. Please use find_element(by=By.NAME, value=name) instead
+    wd.find_element_by_name(field_name).send_keys(text)
+
+test/Group/test_add_group.py::test_add_group[None:::]
+test/Group/test_add_group.py::test_add_group[None:name:header13  FEm5 :footerGzmPlNe OeCnd G]
+test/Group/test_add_group.py::test_add_group[None:namesD GZdJ:header1C7eaDdtasC3Q oitF4:footerG  tUc6vqZ]
+test/Group/test_add_group.py::test_add_group[None:namex:headerLF2D2UOJXh F p 1fsO:footerDjM4h z mpIjE4s]
+test/Group/test_add_group.py::test_add_group[None:name:headerLIiq:footerC3JiIRZHL0pu]
+test/Group/test_add_group.py::test_add_group[None:namecKLN:headerCINavLe8qL :footerB]
+  C:\Users\rymar\.jenkins\workspace\addressbook tests\fixture\group.py:22: DeprecationWarning: find_element_by_name is deprecated. Please use find_element(by=By.NAME, value=name) instead
+    wd.find_element_by_name("submit").click()
+
+test/Group/test_add_group.py::test_add_group[None:::]
+test/Group/test_add_group.py::test_add_group[None:name:header13  FEm5 :footerGzmPlNe OeCnd G]
+test/Group/test_add_group.py::test_add_group[None:namesD GZdJ:header1C7eaDdtasC3Q oitF4:footerG  tUc6vqZ]
+test/Group/test_add_group.py::test_add_group[None:namex:headerLF2D2UOJXh F p 1fsO:footerDjM4h z mpIjE4s]
+test/Group/test_add_group.py::test_add_group[None:name:headerLIiq:footerC3JiIRZHL0pu]
+test/Group/test_add_group.py::test_add_group[None:namecKLN:headerCINavLe8qL :footerB]
+  C:\Users\rymar\.jenkins\workspace\addressbook tests\fixture\group.py:103: DeprecationWarning: find_element_by_link_text is deprecated. Please use find_element(by=By.LINK_TEXT, value=link_text) instead
+    wd.find_element_by_link_text("group page").click()
+
+test/Group/test_add_group.py::test_add_group[None:name:header13  FEm5 :footerGzmPlNe OeCnd G]
+test/Group/test_add_group.py::test_add_group[None:namesD GZdJ:header1C7eaDdtasC3Q oitF4:footerG  tUc6vqZ]
+test/Group/test_add_group.py::test_add_group[None:namex:headerLF2D2UOJXh F p 1fsO:footerDjM4h z mpIjE4s]
+test/Group/test_add_group.py::test_add_group[None:name:headerLIiq:footerC3JiIRZHL0pu]
+test/Group/test_add_group.py::test_add_group[None:namecKLN:headerCINavLe8qL :footerB]
+  C:\Users\rymar\.jenkins\workspace\addressbook tests\fixture\session.py:46: DeprecationWarning: find_element_by_xpath is deprecated. Please use find_element(by=By.XPATH, value=xpath) instead
+    return wd.find_element_by_xpath("//div[@id='top']/form/b").text[1:-1]
+
+test/Group/test_add_group.py::test_add_group[None:name:header13  FEm5 :footerGzmPlNe OeCnd G]
+test/Group/test_add_group.py::test_add_group[None:namesD GZdJ:header1C7eaDdtasC3Q oitF4:footerG  tUc6vqZ]
+test/Group/test_add_group.py::test_add_group[None:namex:headerLF2D2UOJXh F p 1fsO:footerDjM4h z mpIjE4s]
+test/Group/test_add_group.py::test_add_group[None:name:headerLIiq:footerC3JiIRZHL0pu]
+test/Group/test_add_group.py::test_add_group[None:namecKLN:headerCINavLe8qL :footerB]
+  C:\Users\rymar\.jenkins\workspace\addressbook tests\fixture\group.py:12: DeprecationWarning: find_elements_by_name is deprecated. Please use find_elements(by=By.NAME, value=name)=By.NAME, value=name) instead
+    if not (wd.current_url.endswith("/group.php") and len(wd.find_elements_by_name("new")) > 0):
+
+test/Group/test_add_group.py::test_add_group[None:namecKLN:headerCINavLe8qL :footerB]
+  C:\Users\rymar\.jenkins\workspace\addressbook tests\fixture\session.py:19: DeprecationWarning: find_element_by_link_text is deprecated. Please use find_element(by=By.LINK_TEXT, value=link_text) instead
+    wd.find_element_by_link_text("Logout").click()
+
+test/Group/test_add_group.py::test_add_group[None:namecKLN:headerCINavLe8qL :footerB]
+  C:\Users\rymar\.jenkins\workspace\addressbook tests\fixture\session.py:20: DeprecationWarning: find_element_by_name is deprecated. Please use find_element(by=By.NAME, value=name) instead
+    wd.find_element_by_name("user")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================= 6 passed, 99 warnings in 17.32s =======================
+
+C:\Users\rymar\.jenkins\workspace\addressbook tests>exit 0 
+Finished: SUCCESS
+REST API
+Jenkins 2.332.2
