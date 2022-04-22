@@ -1,6 +1,5 @@
 pytest
 pip
-pip3 install --upgrade pip
 pytest_bdd
 selenium
 jsonpickle
