@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0 (Python 3.9.12 on win32)" generated="20220426 20:31:44.053" rpa="false" schemaversion="3">
+<suite id="s1" name="Group Scenarious" source="C:\Users\rymar\PycharmProjects\rymarava_b30_python\rf\group_scenarious.robot">
+<kw name="Init Fixtures" library="rf.AddressBook" type="SETUP">
+<status status="PASS" starttime="20220426 20:31:44.158" endtime="20220426 20:31:54.484"/>
+</kw>
+<test id="s1-t1" name="Add new group" line="7">
+<kw name="Create Group" library="rf.AddressBook">
+<arg>name1</arg>
+<arg>header1</arg>
+<arg>footer1</arg>
+<status status="PASS" starttime="20220426 20:31:54.487" endtime="20220426 20:31:55.498"/>
+</kw>
+<status status="PASS" starttime="20220426 20:31:54.486" endtime="20220426 20:31:55.499"/>
+</test>
+<kw name="Destroy Fixtures" library="rf.AddressBook" type="TEARDOWN">
+<status status="PASS" starttime="20220426 20:31:55.500" endtime="20220426 20:31:56.059"/>
+</kw>
+<status status="PASS" starttime="20220426 20:31:44.055" endtime="20220426 20:31:56.059"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Group Scenarious">Group Scenarious</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
