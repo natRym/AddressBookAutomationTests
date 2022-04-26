@@ -1,11 +1,10 @@
 from pytest_bdd import given, when, then, parsers
 
-from conftest import check_ui, app
 from model.group import Group
 import random
 
 
-# Test Add a Group
+# +++++++++++++++++++++++++++Test Add new group+++++++++++++++++++++++++++++++++
 
 @given('a group list', target_fixture='group_list')
 def group_list(db):
@@ -36,7 +35,7 @@ def verify_group_added(db, group_list, new_group):
 @given('non-empty group list', target_fixture='non_empty_group_list')
 def non_empty_group_list(db, app):
     if len(db.get_group_list()) == 0:
-        app.group.createGroup(name="some name")
+        app.group.create(Group(name="some name"))
     return db.get_group_list()
 
 
