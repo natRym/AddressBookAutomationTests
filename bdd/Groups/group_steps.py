@@ -39,7 +39,7 @@ def non_empty_group_list(db, app):
     return db.get_group_list()
 
 
-@given('a random group from the list', target_fixture='random_group')
+@given('a random group from the list')
 def random_group(non_empty_group_list):
     return random.choice(non_empty_group_list)
 

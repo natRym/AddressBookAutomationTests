@@ -31,6 +31,5 @@ class AddressBook:
     def get_group_list(self):
         return self.dbfixture.get_group_list()
 
-
     def create_group(self, name, header, footer):
         self.fixture.group.create(Group(name=name, header=header, footer=footer))
