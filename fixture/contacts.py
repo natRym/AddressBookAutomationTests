@@ -153,6 +153,7 @@ class ContactHelper:
     def delete_contact_by_id(self, id):
         wd = self.app.wd
         # init opening contacts page
+        self.open_contacts_page()
         self.select_contact_by_id(id)
         # submit deletion
         wd.find_element_by_xpath("//input[@value='Delete']").click()
